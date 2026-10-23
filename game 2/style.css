@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f73690;
+  text-align: center;
+}
+
+.game {
+  max-width: 420px;
+  margin: auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 10px 16px;
+  background: #bf809d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 8px;
+  background: #68f468;
+  border-radius: 10px;
+  touch-action: none;
+}
+
+.tile {
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 6vw, 30px);
+  font-weight: bold;
+  color: black;
+}
+
+.tile:empty {
+  background: #f4c2d7;
+}
+
+#message {
+  min-height: 24px;
+}
