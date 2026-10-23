@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pin Art Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <header>
+      <h1>✨ Pin Art</h1>
+      <p>Push the pins and create amazing shapes!</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span>Score</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="stat">
+        <span>Moves</span>
+        <strong id="moves">0</strong>
+      </div>
+      <div class="stat">
+        <span>Level</span>
+        <strong id="level">1</strong>
+      </div>
+    </div>
+
+    <section class="board-wrap">
+      <canvas id="pinBoard"
+        aria-label="Interactive pin art board"></canvas>
+    </section>
+
+    <p class="hint" id="hint">
+      👆 Touch, drag, or click the pins!
+    </p>
+
+    <div class="controls">
+      <button id="handBtn">✋ Handprint</button>
+      <button id="heartBtn">💖 Heart</button>
+      <button id="waveBtn">🌊 Wave</button>
+      <button id="resetBtn">🔄 Reset</button>
+    </div>
+
+    <div class="extra-controls">
+      <label for="pinSize">Pin height</label>
+      <input id="pinSize" type="range"
+        min="10" max="45" value="25">
+
+      <label for="pinColor">Pin color</label>
+      <select id="pinColor">
+        <option value="rainbow">Rainbow</option>
+        <option value="silver">Silver</option>
+        <option value="blue">Ocean blue</option>
+        <option value="pink">Pink</option>
+      </select>
+    </div>
+
+    <footer>
+      Made for curious fingers ✨
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

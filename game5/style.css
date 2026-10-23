@@ -1,0 +1,151 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 12px;
+  font-family: Arial, sans-serif;
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at top, #34245f, #11152d 65%);
+}
+
+.game {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  margin: 8px 0;
+  font-size: clamp(30px, 7vw, 44px);
+  background: linear-gradient(90deg, #67e8f9, #f0abfc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+header p {
+  color: #cbd5e1;
+  margin: 10px 0 22px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.stat {
+  flex: 1;
+  max-width: 140px;
+  padding: 12px;
+  border: 1px solid #ffffff22;
+  border-radius: 14px;
+  background: #ffffff0b;
+}
+
+.stat span {
+  display: block;
+  color: #a5b4fc;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.stat strong {
+  font-size: 22px;
+}
+
+.board-wrap {
+  overflow: hidden;
+  padding: 9px;
+  border-radius: 20px;
+  border: 1px solid #ffffff25;
+  background: linear-gradient(145deg, #273449, #101827);
+  box-shadow: 0 18px 50px #0006;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.hint {
+  min-height: 24px;
+  color: #c4b5fd;
+  margin: 16px 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+button, select {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#resetBtn {
+  background: linear-gradient(135deg, #f43f5e, #db2777);
+}
+
+.extra-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #ffffff0b;
+  font-size: 13px;
+}
+
+input[type="range"] {
+  width: 100px;
+  accent-color: #c084fc;
+}
+
+select {
+  padding: 9px;
+}
+
+footer {
+  margin-top: 24px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+  .controls {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
