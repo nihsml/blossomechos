@@ -1,0 +1,117 @@
+:root {
+    --blossom-pink: #ff4a7d;
+    --bubbles-blue: #4cc9f0;
+    --buttercup-green: #4ad66d;
+    --dark: #2b2d42;
+    --light-pink: #fff0f3;
+}
+
+body {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
+    background-color: var(--light-pink);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--dark);
+}
+
+.quiz-container {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 74, 125, 0.15);
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    border: 4px solid var(--blossom-pink);
+}
+
+.title {
+    color: var(--blossom-pink);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.screen { transition: all 0.3s ease; }
+.hide { display: none !important; }
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #888;
+}
+
+#question-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn, .option-btn {
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn {
+    background: var(--blossom-pink);
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 74, 125, 0.3);
+    width: 100%;
+}
+
+.primary-btn:hover { background: #d1305c; }
+
+.action-btn {
+    background: var(--bubbles-blue);
+    color: white;
+    border: none;
+    width: 100%;
+}
+
+.option-btn {
+    border: 2px solid #ddd;
+    background: white;
+    color: var(--dark);
+    text-align: center;
+}
+
+.option-btn:hover:not([disabled]) {
+    border-color: var(--blossom-pink);
+    background: var(--light-pink);
+}
+
+/* Correct/Incorrect Answer Highlights */
+.correct { 
+    background: var(--buttercup-green) !important; 
+    color: white !important; 
+    border-color: var(--buttercup-green) !important; 
+}
+.wrong { 
+    background: var(--blossom-pink) !important; 
+    color: white !important; 
+    border-color: var(--blossom-pink) !important; 
+}
