@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd9ec">
+    <title>Fidget Pop — Play</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="game-container">
+        <a class="back-link" href="../../index.html#games">← Back to the Powerpuff page</a>
+        <header>
+            <div class="logo" aria-hidden="true">🌈</div>
+            <h1>Fidget Pop</h1>
+            <p class="subtitle">Pop your stress away!</p>
+        </header>
+
+        <section class="stats" aria-label="Game statistics">
+            <div class="stat-card"><span>⭐ SCORE</span><strong id="score">0</strong></div>
+            <div class="stat-card"><span>⏱️ TIME</span><strong><span id="time">30</span>s</strong></div>
+            <div class="stat-card"><span>🏆 BEST</span><strong id="best">0</strong></div>
+        </section>
+
+        <div class="controls">
+            <label for="mode">Game mode</label>
+            <select id="mode">
+                <option value="challenge">30-Second Challenge</option>
+                <option value="relax">Relax Mode</option>
+            </select>
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <div id="message" aria-live="polite">Ready to pop some bubbles?</div>
+        <div id="bubble-board" class="bubble-board" aria-label="Fidget bubble board"></div>
+        <div class="buttons">
+            <button id="start-button" type="button">▶ Start Game</button>
+            <button id="sound-button" type="button" aria-pressed="true">🔊 Sound On</button>
+        </div>
+        <p class="hint">Tap the bubbles and enjoy the satisfying pop! ✨</p>
+    </main>
+</body>
+</html>

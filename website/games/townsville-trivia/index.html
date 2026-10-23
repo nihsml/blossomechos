@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff0f3">
+    <title>Townsville Trivia — Play</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="quiz-container">
+        <a class="back-link" href="../../index.html#games">← Back to the Powerpuff page</a>
+        <div id="start-screen" class="screen">
+            <h1 class="title">Townsville Trivia!</h1>
+            <p class="subtitle">Sugar, spice, and everything nice. Do you know everything about the Powerpuff Girls?</p>
+            <button id="start-btn" class="btn primary-btn" type="button">Save the Day (Start Quiz)</button>
+        </div>
+        <div id="quiz-screen" class="screen hide">
+            <div class="quiz-header">
+                <span id="progress">Question 1 of 5</span>
+                <span id="timer">Time: 15s</span>
+            </div>
+            <div id="question-text">Loading question...</div>
+            <div id="options-container" class="options-grid"></div>
+            <button id="next-btn" class="btn action-btn hide" type="button">Next Question</button>
+        </div>
+        <div id="end-screen" class="screen hide">
+            <h2>Mission Accomplished!</h2>
+            <p id="score-text">You scored 0 out of 5</p>
+            <p id="feedback-text"></p>
+            <button id="restart-btn" class="btn primary-btn" type="button">Play Again</button>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

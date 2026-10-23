@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd9ec">
+    <title>248 Game — Play</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game">
+        <a class="back-link" href="../../index.html#games">← Back to the Powerpuff page</a>
+        <h1>248 Game</h1>
+        <p>Merge matching tiles to reach 248!</p>
+        <div class="top">
+            <p>Score: <span id="score">0</span></p>
+            <button type="button" onclick="restart()">Restart</button>
+        </div>
+        <div id="board" class="board" aria-label="248 puzzle board"></div>
+        <p id="message" aria-live="polite">Use arrow keys or swipe to play.</p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

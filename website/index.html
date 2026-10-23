@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff1f7">
+    <title>Powerpuff Girls — Sugar, Spice &amp; Saving the Day</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --pink: #f44891;
+            --pink-dark: #d72d75;
+            --pink-soft: #fff1f7;
+            --ink: #322033;
+            --muted: #806d80;
+            --white: #fffdfd;
+            --line: #f4d8e6;
+            --shadow: 0 18px 50px rgba(122, 47, 88, .11);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 8% 14%, rgba(255, 187, 216, .27) 0 2px, transparent 3px) 0 0 / 28px 28px,
+                var(--pink-soft);
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; }
+
+        .site-header {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 23px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 39px;
+            height: 39px;
+            place-items: center;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            background: #ffcae1;
+            font-size: 19px;
+        }
+
+        .brand span:last-child { font-size: 16px; }
+
+        nav { display: flex; align-items: center; gap: 28px; }
+
+        nav a {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 800;
+            transition: color .2s ease;
+        }
+
+        nav a:hover, nav a:focus-visible { color: var(--pink-dark); }
+
+        .nav-cta {
+            padding: 11px 16px;
+            color: white;
+            border-radius: 999px;
+            background: var(--ink);
+        }
+
+        nav .nav-cta:hover, nav .nav-cta:focus-visible { color: white; background: var(--pink-dark); }
+
+        main { overflow: hidden; }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 44px;
+            width: min(1120px, calc(100% - 40px));
+            min-height: 570px;
+            margin: 0 auto;
+            padding: 45px 0 72px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 17px;
+            color: var(--pink-dark);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before { content: "✦"; font-size: 17px; }
+
+        h1 {
+            max-width: 570px;
+            margin: 0;
+            font-size: clamp(46px, 6.8vw, 82px);
+            line-height: .94;
+            letter-spacing: -.075em;
+        }
+
+        h1 .accent { color: var(--pink); }
+
+        .hero-copy > p:not(.eyebrow) {
+            max-width: 440px;
+            margin: 22px 0 27px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 20px;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            background: var(--ink);
+            color: white;
+            font-size: 13px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .button:hover { transform: translateY(-3px); box-shadow: 0 9px 18px rgba(50, 32, 51, .15); }
+        .button-secondary { background: transparent; color: var(--ink); }
+        .button-secondary:hover { background: white; }
+
+        .hero-art {
+            position: relative;
+            display: grid;
+            min-height: 410px;
+            place-items: center;
+            isolation: isolate;
+        }
+
+        .orbit {
+            position: absolute;
+            z-index: -1;
+            width: min(410px, 90%);
+            aspect-ratio: 1;
+            border: 1px dashed #efa8c8;
+            border-radius: 50%;
+            transform: rotate(-18deg);
+        }
+
+        .orbit::before, .orbit::after {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: var(--pink);
+            content: "";
+        }
+
+        .orbit::before { top: 15%; left: 12%; }
+        .orbit::after { right: 7%; bottom: 23%; background: #79d5ee; }
+
+        .hero-bubble {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            border: 2px solid rgba(255,255,255,.85);
+            border-radius: 50%;
+            background: rgba(255,255,255,.68);
+            color: var(--pink);
+            box-shadow: 0 8px 24px rgba(222, 82, 145, .12);
+        }
+
+        .bubble-one { top: 17%; right: 8%; width: 48px; height: 48px; font-size: 22px; transform: rotate(12deg); }
+        .bubble-two { bottom: 13%; left: 8%; width: 38px; height: 38px; font-size: 17px; }
+        .bubble-three { top: 9%; left: 13%; width: 28px; height: 28px; font-size: 14px; }
+
+        .team {
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: clamp(0px, 2vw, 22px);
+            padding-top: 46px;
+        }
+
+        .girl {
+            --hair: #f775a9;
+            --dress: #f44891;
+            position: relative;
+            display: flex;
+            width: clamp(106px, 13vw, 152px);
+            height: clamp(210px, 24vw, 278px);
+            flex-direction: column;
+            align-items: center;
+            animation: float 3.4s ease-in-out infinite;
+        }
+
+        .girl:nth-child(2) { --hair: #6dcde7; --dress: #61c9e8; animation-delay: .35s; }
+        .girl:nth-child(3) { --hair: #5b473e; --dress: #87cf67; animation-delay: .7s; }
+
+        .girl-head {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 69%;
+            overflow: hidden;
+            border: 3px solid var(--ink);
+            border-radius: 48% 48% 43% 43%;
+            background: #ffe0c9;
+            box-shadow: inset 0 7px 0 rgba(255,255,255,.28);
+        }
+
+        .hair {
+            position: absolute;
+            inset: -9% -3% 46%;
+            border: 3px solid var(--ink);
+            border-bottom: 0;
+            border-radius: 48% 48% 28% 28%;
+            background: var(--hair);
+        }
+
+        .hair::before, .hair::after {
+            position: absolute;
+            top: 58%;
+            width: 23%;
+            height: 54%;
+            border: 3px solid var(--ink);
+            border-top: 0;
+            border-radius: 0 0 45% 45%;
+            background: var(--hair);
+            content: "";
+        }
+
+        .hair::before { left: -2%; transform: rotate(8deg); }
+        .hair::after { right: -2%; transform: rotate(-8deg); }
+        .girl:nth-child(2) .hair { inset: -8% -7% 61%; }
+        .girl:nth-child(3) .hair { inset: -6% -4% 53%; }
+
+        .eye {
+            position: absolute;
+            z-index: 1;
+            top: 48%;
+            width: 23%;
+            height: 27%;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            background: white;
+        }
+
+        .eye::after {
+            position: absolute;
+            right: 13%;
+            bottom: 7%;
+            width: 53%;
+            height: 65%;
+            border-radius: 50%;
+            background: var(--ink);
+            content: "";
+        }
+
+        .eye-left { left: 21%; }
+        .eye-right { right: 21%; }
+
+        .blush {
+            position: absolute;
+            top: 76%;
+            width: 16%;
+            height: 7%;
+            border-radius: 50%;
+            background: rgba(245, 116, 150, .42);
+        }
+        .blush-left { left: 11%; }
+        .blush-right { right: 11%; }
+
+        .smile {
+            position: absolute;
+            top: 79%;
+            left: 43%;
+            width: 14%;
+            height: 7%;
+            border-bottom: 2px solid var(--ink);
+            border-radius: 0 0 50% 50%;
+        }
+
+        .girl-body {
+            position: relative;
+            z-index: 1;
+            width: 70%;
+            height: 34%;
+            margin-top: -2px;
+            border: 3px solid var(--ink);
+            border-radius: 10px 10px 22px 22px;
+            background: var(--dress);
+        }
+
+        .girl-body::before {
+            position: absolute;
+            top: 22%;
+            left: 0;
+            width: 100%;
+            height: 17%;
+            background: var(--ink);
+            content: "";
+        }
+
+        .leg {
+            position: absolute;
+            bottom: 0;
+            width: 20%;
+            height: 10%;
+            border: 2px solid var(--ink);
+            border-radius: 0 0 7px 7px;
+            background: #ffe0c9;
+        }
+
+        .leg-left { left: 29%; }
+        .leg-right { right: 29%; }
+
+        .hero-caption {
+            position: absolute;
+            right: 0;
+            bottom: 13px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .section {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 55px 0 88px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .section-heading .eyebrow { margin-bottom: 9px; }
+        h2 { margin: 0; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.06em; }
+        .section-note { max-width: 300px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            --card-accent: var(--pink);
+            min-height: 198px;
+            padding: 23px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: rgba(255, 253, 253, .86);
+            box-shadow: 0 8px 24px rgba(122, 47, 88, .04);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .card:nth-child(2) { --card-accent: #44badb; }
+        .card:nth-child(3) { --card-accent: #68b950; }
+
+        .card-top { display: flex; align-items: center; justify-content: space-between; }
+
+        .avatar {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            place-items: center;
+            border: 2px solid var(--ink);
+            border-radius: 16px;
+            background: color-mix(in srgb, var(--card-accent) 17%, white);
+            color: var(--card-accent);
+            font-size: 23px;
+        }
+
+        .number { color: #c5adbf; font-size: 11px; font-weight: 900; }
+        .card h3 { margin: 19px 0 7px; font-size: 19px; letter-spacing: -.04em; }
+        .card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+        .game-card { display: flex; flex-direction: column; align-items: flex-start; }
+        .game-card .game-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: auto;
+            padding-top: 18px;
+            color: var(--pink-dark);
+            font-size: 13px;
+            font-weight: 900;
+        }
+        .game-card .game-link:hover, .game-card .game-link:focus-visible { text-decoration: underline; }
+
+        .mission {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 26px;
+            margin-top: 28px;
+            padding: 26px 30px;
+            border: 1px solid #f5d4e4;
+            border-radius: 22px;
+            background: linear-gradient(110deg, #ffe3ef, #fff8fb);
+        }
+
+        .mission strong { display: block; margin-bottom: 5px; font-size: 16px; }
+        .mission p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+        .mission .button { flex-shrink: 0; border-color: var(--pink); background: var(--pink); }
+        .mission .button:hover { border-color: var(--pink-dark); background: var(--pink-dark); }
+
+        footer {
+            display: flex;
+            width: min(1120px, calc(100% - 40px));
+            justify-content: space-between;
+            gap: 20px;
+            margin: 0 auto;
+            padding: 23px 0 30px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .toast {
+            position: fixed;
+            z-index: 5;
+            right: 22px;
+            bottom: 22px;
+            max-width: min(360px, calc(100vw - 44px));
+            padding: 14px 18px;
+            border: 2px solid var(--ink);
+            border-radius: 15px;
+            background: white;
+            box-shadow: var(--shadow);
+            font-size: 13px;
+            font-weight: 800;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: opacity .2s ease, transform .2s ease;
+        }
+
+        .toast.visible { opacity: 1; transform: translateY(0); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-9px) rotate(1deg); }
+        }
+
+        @media (max-width: 760px) {
+            .site-header { padding: 17px 0; }
+            nav { gap: 15px; }
+            nav a { font-size: 12px; }
+            .hero { grid-template-columns: 1fr; gap: 5px; padding-top: 50px; }
+            .hero-copy { text-align: center; }
+            .hero-copy > p:not(.eyebrow) { margin-right: auto; margin-left: auto; }
+            .button-row { justify-content: center; }
+            .hero-art { min-height: 350px; }
+            .girl { width: clamp(96px, 19vw, 140px); height: clamp(195px, 37vw, 255px); }
+            .hero-caption { right: 8%; bottom: 0; }
+        }
+
+        @media (max-width: 520px) {
+            .site-header { width: min(100% - 30px, 1120px); }
+            nav { gap: 12px; }
+            nav a:not(.nav-cta) { display: none; }
+            .hero, .section, footer { width: min(100% - 30px, 1120px); }
+            .hero { min-height: auto; }
+            .hero-art { min-height: 310px; }
+            .girl { width: 30vw; height: 58vw; max-height: 235px; }
+            .orbit { width: 85%; }
+            .section { padding: 35px 0 60px; }
+            .section-heading { align-items: start; flex-direction: column; }
+            .section-note { max-width: 100%; }
+            .cards { grid-template-columns: 1fr; }
+            .card { min-height: auto; }
+            .mission { align-items: flex-start; flex-direction: column; padding: 23px; }
+            footer { flex-direction: column; gap: 7px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="Powerpuff Girls fan page home">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            <span>THE POWERPUFF GIRLS</span>
+        </a>
+        <nav aria-label="Main navigation">
+            <a href="#games">Play games</a>
+            <a href="#team">Meet the team</a>
+            <a href="#mission">Our mission</a>
+            <a class="nav-cta" href="#team">Join the fun <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow">Townsville's tiniest heroes</p>
+                <h1 id="hero-title">Sugar, spice &amp; <span class="accent">save the day!</span></h1>
+                <p>Three super-powered sisters. One very big heart. Get to know the little heroes who prove that being kind is the coolest superpower of all.</p>
+                <div class="button-row">
+                    <a class="button" href="#team">Meet the girls <span aria-hidden="true">↓</span></a>
+                    <button class="button button-secondary" id="surprise-button" type="button">A little surprise <span aria-hidden="true">✦</span></button>
+                </div>
+            </div>
+
+            <div class="hero-art" role="img" aria-label="Three original cartoon-inspired heroine illustrations in pink, blue, and green">
+                <span class="orbit" aria-hidden="true"></span>
+                <span class="hero-bubble bubble-one" aria-hidden="true">✦</span>
+                <span class="hero-bubble bubble-two" aria-hidden="true">♡</span>
+                <span class="hero-bubble bubble-three" aria-hidden="true">✧</span>
+                <div class="team" aria-hidden="true">
+                    <div class="girl">
+                        <div class="girl-head">
+                            <span class="hair"></span><span class="eye eye-left"></span><span class="eye eye-right"></span>
+                            <span class="blush blush-left"></span><span class="blush blush-right"></span><span class="smile"></span>
+                        </div>
+                        <div class="girl-body"></div><span class="leg leg-left"></span><span class="leg leg-right"></span>
+                    </div>
+                    <div class="girl">
+                        <div class="girl-head">
+                            <span class="hair"></span><span class="eye eye-left"></span><span class="eye eye-right"></span>
+                            <span class="blush blush-left"></span><span class="blush blush-right"></span><span class="smile"></span>
+                        </div>
+                        <div class="girl-body"></div><span class="leg leg-left"></span><span class="leg leg-right"></span>
+                    </div>
+                    <div class="girl">
+                        <div class="girl-head">
+                            <span class="hair"></span><span class="eye eye-left"></span><span class="eye eye-right"></span>
+                            <span class="blush blush-left"></span><span class="blush blush-right"></span><span class="smile"></span>
+                        </div>
+                        <div class="girl-body"></div><span class="leg leg-left"></span><span class="leg leg-right"></span>
+                    </div>
+                </div>
+                <span class="hero-caption">Made of sugar, spice &amp; everything nice ✧</span>
+            </div>
+        </section>
+
+        <section class="section" id="games" aria-labelledby="games-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Pick your power-up</p>
+                    <h2 id="games-title">Play the games</h2>
+                </div>
+                <p class="section-note">Take a quick break in Townsville. Choose a game and jump right in!</p>
+            </div>
+
+            <div class="cards">
+                <article class="card game-card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">✦</span><span class="number">01 / QUICK PLAY</span></div>
+                    <h3>Fidget Pop</h3>
+                    <p>Pop a rainbow of bubbles. Go for a 30-second high score or relax at your own pace.</p>
+                    <a class="game-link" href="games/fidget-pop/index.html">Play Fidget Pop <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="card game-card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">▦</span><span class="number">02 / PUZZLE</span></div>
+                    <h3>248 Game</h3>
+                    <p>Slide and merge matching tiles in this colorful, 2048-style puzzle challenge.</p>
+                    <a class="game-link" href="games/248-game/index.html">Play 248 Game <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="card game-card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">❔</span><span class="number">03 / TRIVIA</span></div>
+                    <h3>Townsville Trivia</h3>
+                    <p>Test your Powerpuff Girls knowledge in a 20-question race against the clock.</p>
+                    <a class="game-link" href="games/townsville-trivia/index.html">Play Trivia <span aria-hidden="true">↗</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="team" aria-labelledby="team-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Small but mighty</p>
+                    <h2 id="team-title">Meet your heroes</h2>
+                </div>
+                <p class="section-note">Different strengths, one unstoppable team. Pick your favorite and cheer them on!</p>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">✿</span><span class="number">01 / LEADER</span></div>
+                    <h3>Blossom</h3>
+                    <p>Cool, confident, and always three steps ahead. The team's big-picture thinker with a heart of gold.</p>
+                </article>
+                <article class="card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">☁</span><span class="number">02 / HEART</span></div>
+                    <h3>Bubbles</h3>
+                    <p>Sweet, sunny, and stronger than she looks. She meets every challenge with kindness and a smile.</p>
+                </article>
+                <article class="card">
+                    <div class="card-top"><span class="avatar" aria-hidden="true">⚡</span><span class="number">03 / FIRECRACKER</span></div>
+                    <h3>Buttercup</h3>
+                    <p>Bold, brave, and never backs down. She brings the fearless energy that keeps the team moving.</p>
+                </article>
+            </div>
+
+            <div class="mission" id="mission">
+                <div>
+                    <strong>Every day needs a little more kindness.</strong>
+                    <p>Stand up for your friends, help where you can, and remember: heroes come in every size.</p>
+                </div>
+                <button class="button" id="mission-button" type="button">I'm in! <span aria-hidden="true">♡</span></button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Made with extra sugar, spice &amp; pink ✦</span>
+        <span>A fan-made tribute — not affiliated with the original series.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        const toast = document.getElementById("toast");
+        let toastTimeout;
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("visible");
+            window.clearTimeout(toastTimeout);
+            toastTimeout = window.setTimeout(() => toast.classList.remove("visible"), 3000);
+        }
+
+        document.getElementById("surprise-button").addEventListener("click", () => {
+            showToast("You are made of sugar, spice, and everything nice! ✨");
+        });
+
+        document.getElementById("mission-button").addEventListener("click", (event) => {
+            event.currentTarget.innerHTML = 'You got this! <span aria-hidden="true">✦</span>';
+            showToast("Kindness mission accepted. Go make someone's day! 💗");
+        });
+    </script>
+</body>
+</html>
